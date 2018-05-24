@@ -17,6 +17,23 @@ namespace MvvmcrossDemo
     {
         private readonly Lazy<IMvxNavigationService> _navigationService = new Lazy<IMvxNavigationService>(Mvx.Resolve<IMvxNavigationService>);
 
+
+        public FirstViewModel()
+        {
+            ItemsGroup = new List<Item>();
+            for (int i=0; i<10; i++)
+            {
+                var CoinList = new List<CoinHistoryModel>()
+                {
+                    new CoinHistoryModel{ price_btc = "First", timestamp = 10 + i * 5 },
+                    new CoinHistoryModel{ price_btc = "Second", timestamp = 20 + i * 5 },
+                    new CoinHistoryModel{ price_btc = "Third", timestamp = 30 + i * 5 }
+                };
+                ItemsGroup.Add(new Item { Name = "name" + i, SingleCoinHistory = CoinList });
+            }
+        }
+
+
         private List<CoinHistoryModel> _CoinHistory;
 
         public List<CoinHistoryModel> CoinHistory
@@ -50,12 +67,36 @@ namespace MvvmcrossDemo
                 new CoinHistoryModel{ price_btc = "Third", timestamp = 30 }
             };
         }
+
+
+        private List<Item> _ItemsGroup;
+        public List<Item> ItemsGroup
+        {
+            get
+            {
+                return _ItemsGroup;
+            }
+            set
+            {
+                _ItemsGroup = value;
+                RaisePropertyChanged(() => ItemsGroup);
+            }
+        }
+
+        private MvxCommand<Item> showDetailsCommand;
+        public ICommand ShowDetailsCommand
+        {
+            get
+            {
+                return showDetailsCommand ?? (showDetailsCommand = new MvxCommand<Item>(showDetails));
+            }
+        }
+        async void showDetails(Item item)
+        {
+            await _navigationService.Value.Navigate<SecondViewModel, Item>(item);
+        }
+
     }
 
-    public class CoinHistoryModel
-    {
-        public string price_btc { get; set; }
-
-        public double timestamp { get; set; }
-    }
+    
 }

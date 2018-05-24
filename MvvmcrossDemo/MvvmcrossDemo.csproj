@@ -59,13 +59,21 @@
     <CodesignKey>iPhone Developer</CodesignKey>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="CoinHistoryModel.cs" />
     <Compile Include="FirstModel.cs" />
     <Compile Include="FirstView.cs" />
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />
+    <Compile Include="SecondView.cs" />
+    <Compile Include="SecondViewModel.cs" />
     <None Include="GettingStarted.Xamarin" />
     <None Include="Info.plist" />
+    <Compile Include="MyTableViewCell.cs" />
+    <Compile Include="MyTableViewCell.designer.cs">
+      <DependentUpon>MyTableViewCell.cs</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <InterfaceDefinition Include="MyTableViewCell.xib" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
