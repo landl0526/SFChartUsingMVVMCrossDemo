@@ -50,23 +50,23 @@ namespace MvvmcrossDemo
         }
 
 
-        private MvxCommand loadDataCommand;
-        public ICommand LoadDataCommand
-        {
-            get
-            {
-                return loadDataCommand ?? (loadDataCommand = new MvxCommand(ExecuteloadDataCommand));
-            }
-        }
-        private void ExecuteloadDataCommand()
-        {
-            CoinHistory = new List<CoinHistoryModel>()
-            {
-                new CoinHistoryModel{ price_btc = "First", timestamp = 10 },
-                new CoinHistoryModel{ price_btc = "Second", timestamp = 20 },
-                new CoinHistoryModel{ price_btc = "Third", timestamp = 30 }
-            };
-        }
+        //private MvxCommand loadDataCommand;
+        //public ICommand LoadDataCommand
+        //{
+        //    get
+        //    {
+        //        return loadDataCommand ?? (loadDataCommand = new MvxCommand(ExecuteloadDataCommand));
+        //    }
+        //}
+        //private void ExecuteloadDataCommand()
+        //{
+        //    CoinHistory = new List<CoinHistoryModel>()
+        //    {
+        //        new CoinHistoryModel{ price_btc = "First", timestamp = 10 },
+        //        new CoinHistoryModel{ price_btc = "Second", timestamp = 20 },
+        //        new CoinHistoryModel{ price_btc = "Third", timestamp = 30 }
+        //    };
+        //}
 
 
         private List<Item> _ItemsGroup;
